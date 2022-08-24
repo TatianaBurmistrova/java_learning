@@ -27,22 +27,23 @@ public class ContactCreation {
     login("admin", "secret");
     initContactCreation();
     fillContactForm(new ContactData("Test User1", "LastName1", "NewUser", "Test Company1", "Russia, Moscow", "222222222", "test@test.com", "13", "February", "1991"));
-    addingContactToGroup("test1");
+   addingContactToGroup("test1");
+
     submitContactCreation();
     returnToHomePage();
   }
 
+  private void returnToHomePage() {
+    wd.findElement(By.linkText("home page")).click();
+  }
 
 
-  private void addingContactToGroup(String groupname) {
+ private void addingContactToGroup(String groupname) {
     wd.findElement(By.name("new_group")).click();
     new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(groupname);
-    wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  private void submitContactCreation() {
-    wd.findElement(By.name("submit")).click();
-  }
+
 
   private void fillContactForm(ContactData contactData) {
     wd.findElement(By.name("firstname")).click();
@@ -88,8 +89,8 @@ public class ContactCreation {
     wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
-  private void returnToHomePage() {
-    wd.findElement(By.linkText("home page")).click();
+  private void submitContactCreation() {
+    wd.findElement(By.name("submit")).click();
   }
 
   @AfterClass(alwaysRun = true)
