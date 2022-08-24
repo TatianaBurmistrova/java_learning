@@ -15,7 +15,7 @@ public class ContactCreation {
   private WebDriver wd;
 
 
-  @BeforeClass(alwaysRun = true)
+  @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
@@ -93,7 +93,7 @@ public class ContactCreation {
     wd.findElement(By.name("submit")).click();
   }
 
-  @AfterClass(alwaysRun = true)
+  @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
     wd.findElement(By.linkText("Logout")).click();
     wd.quit();
