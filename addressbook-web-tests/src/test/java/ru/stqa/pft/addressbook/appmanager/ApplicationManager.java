@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -31,6 +32,11 @@ public class ApplicationManager {
   public void stop() {
     wd.findElement(By.linkText("Logout")).click();
     wd.quit();
+  }
+
+  public Alert myAlert() {
+    wd.switchTo().alert();
+    return null;
   }
 
 
