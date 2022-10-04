@@ -33,7 +33,7 @@ public class ApplicationManager {
       wd = new InternetExplorerDriver();
     }
 
-    wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(300));
+    wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(0)); //время, за которое ищет элемент, помогает при медленной загрузке страницы
     wd.get("http://localhost/addressbook/group.php");
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);

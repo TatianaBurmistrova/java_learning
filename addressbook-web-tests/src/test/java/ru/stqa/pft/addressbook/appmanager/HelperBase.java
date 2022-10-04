@@ -27,6 +27,8 @@ public class HelperBase {
         wd.findElement(locator).sendKeys(text);
       }
     }
+    /* wd.findElement(locator).clear();
+    wd.findElement(locator).sendKeys(text);*/
   }
 
   protected void selectionType(By locator, String visibleText) {
@@ -34,14 +36,15 @@ public class HelperBase {
     new Select(wd.findElement(locator)).selectByVisibleText(visibleText);
   }
 
-  private boolean isElementPresent(By by) {
+  protected boolean isElementPresent(By locator) {
     try {
-      wd.findElement(by);
+      wd.findElement(locator);
       return true;
-    } catch (NoSuchElementException e) {
+    } catch (NoSuchElementException ex) {
       return false;
     }
   }
+
 
   private boolean isAlertPresent() {
     try {
