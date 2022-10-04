@@ -2,8 +2,8 @@ package ru.stqa.pft.addressbook.tests;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.remote.BrowserType;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+
+import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 
 public class TestBase {

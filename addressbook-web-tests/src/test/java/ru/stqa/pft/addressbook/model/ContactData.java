@@ -11,7 +11,7 @@ public class ContactData {
   private final String bday;
   private final String bmonth;
   private final String byear;
-  private String group;
+  private final String group;
 
   public ContactData(String userfirstname, String userlastname, String title,
                      String company, String address, String mobile, String email,
