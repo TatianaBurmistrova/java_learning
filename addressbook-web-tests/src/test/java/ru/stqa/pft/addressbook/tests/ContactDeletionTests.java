@@ -1,6 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 
 public class ContactDeletionTests extends TestBase{

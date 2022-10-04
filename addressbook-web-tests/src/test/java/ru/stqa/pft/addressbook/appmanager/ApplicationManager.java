@@ -4,6 +4,9 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.BrowserType;
 
 import java.time.Duration;
 
@@ -14,10 +17,22 @@ public class ApplicationManager {
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
   private ContactHelper contactHelper;
+  private String browser;
+
+  public ApplicationManager(String browser) {
+    this.browser = browser;
+  }
 
 
   public void init() {
-    wd = new ChromeDriver();
+    if ( browser == BrowserType.CHROME) {
+      wd = new ChromeDriver();
+    } else if ( browser == BrowserType.FIREFOX ){
+      wd = new FirefoxDriver();
+    } else if ( browser == BrowserType.IE ) {
+      wd = new InternetExplorerDriver();
+    }
+
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(300));
     wd.get("http://localhost/addressbook/group.php");
     groupHelper = new GroupHelper(wd);
