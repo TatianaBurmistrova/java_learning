@@ -13,6 +13,7 @@ public class ContactData {
   private final String byear;
   private final String group;
 
+
   public ContactData(String userfirstname, String userlastname, String title,
                      String company, String address, String mobile, String email,
                      String bday, String bmonth, String byear, String group) {
@@ -72,4 +73,5 @@ public class ContactData {
   public String getGroup() {
     return group;
   }
+
 }

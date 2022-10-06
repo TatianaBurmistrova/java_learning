@@ -31,7 +31,6 @@ public class ContactHelper extends HelperBase {
     selectionType(By.name("bday"), contactData.getBday());
     selectionType(By.name("bmonth"), contactData.getBmonth());
     type(By.name("byear"),contactData.getByear());
-
     if (creation){
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
