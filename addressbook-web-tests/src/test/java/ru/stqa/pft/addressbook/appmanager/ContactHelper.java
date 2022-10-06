@@ -8,17 +8,13 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
 
-  public ContactHelper(WebDriver wd) {
+    public ContactHelper(WebDriver wd) {
     super(wd);
   }
 
   public void switchToAlert() {
     wd.switchTo().alert().accept();
   }
-
-  /*public void addingContactToGroup(String groupname) {
-    selectionType(By.name("new_group"), groupname);
-   }*/
 
   public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"),contactData.getUserfirstname());
@@ -62,5 +58,23 @@ public class ContactHelper extends HelperBase {
 
   public void submitContactModification() {
     click(By.xpath("//input[22]"));
+  }
+
+  public void returnToHomePage() {
+    if (isElementPresent(By.id("maintable"))){
+      return;
+    }
+    click(By.linkText("home page"));
+  }
+
+  public void createContact(ContactData contact) {
+    initContactCreation();
+    fillContactForm(contact, true);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public boolean isThereAContact() {
+      return isElementPresent(By.name("selected[]"));
   }
 }

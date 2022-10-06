@@ -10,14 +10,10 @@ public class ContactCreationTests extends TestBase {
   @Test
   public void testContactCreation()  {
     app.getNavigationHelper().goToHomePage();
-    app. getContactHelper().initContactCreation();
-    app. getContactHelper().fillContactForm(new ContactData("Test User1", "LastName1", "NewUser"
+    app. getContactHelper().createContact(new ContactData("Test User1", "LastName1", "NewUser"
             , "Test Company1", "Russia, Moscow", "222222222"
             , "test@test.com", "13", "February", "1991"
-            , "test1"), true);
-    //app. getContactHelper().addingContactToGroup("test1");
-    app. getContactHelper().submitContactCreation();
-    app.getNavigationHelper().returnToHomePage();
+            , "test1"));
   }
 
 
