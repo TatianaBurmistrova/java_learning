@@ -24,6 +24,7 @@ public class ContactDeletionTests extends TestBase{
     app.getNavigationHelper().goToHomePage();
     int after = app.getContactHelper().getContactCount();
     Assert.assertEquals(after, before - 1);
+
   }
 
 
