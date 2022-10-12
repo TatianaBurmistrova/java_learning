@@ -17,13 +17,13 @@ public class ContactDeletionTests extends TestBase{
               , "Test Company1", "Russia, Moscow", "222222222"
               , "test@test.com", "13", "February", "1991"
               , "test1"));
-      int after = app.getContactHelper().getContactCount();
-      Assert.assertEquals(after, before - 1);
-    }
-    app.getContactHelper().selectContact();
+          }
+    app.getContactHelper().selectContact(before - 1);
     app.getContactHelper().deleteSelectedContacts();
     app.getContactHelper().switchToAlert();
     app.getNavigationHelper().goToHomePage();
+    int after = app.getContactHelper().getContactCount();
+    Assert.assertEquals(after, before - 1);
   }
 
 
