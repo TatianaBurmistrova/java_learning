@@ -70,8 +70,6 @@ public class ContactData {
     return byear;
   }
 
-  public String getGroup() {
-    return group;
-  }
+  public String getGroup() { return group;  }
 
 }
