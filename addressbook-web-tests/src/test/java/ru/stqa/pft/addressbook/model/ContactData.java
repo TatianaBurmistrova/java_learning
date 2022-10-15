@@ -19,7 +19,7 @@ public class ContactData {
   public ContactData(String userfirstname, String userlastname, String title,
                      String company, String address, String mobile, String email,
                      String bday, String bmonth, String byear, String group) {
-    this.id = 0;
+    this.id = Integer.MAX_VALUE;//this.id = 0;
     this.userfirstname = userfirstname;
     this.userlastname = userlastname;
     this.title = title;
@@ -104,7 +104,7 @@ public class ContactData {
             '}';
   }
 
-  @Override
+ /* @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -120,6 +120,24 @@ public class ContactData {
   public int hashCode() {
     int result = id;
     result = 31 * result + (userfirstname != null ? userfirstname.hashCode() : 0);
+    result = 31 * result + (userlastname != null ? userlastname.hashCode() : 0);
+    return result;
+  }*/
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContactData that = (ContactData) o;
+
+    if (!Objects.equals(userfirstname, that.userfirstname)) return false;
+    return Objects.equals(userlastname, that.userlastname);
+  }
+
+  @Override
+  public int hashCode() {
+    int result = userfirstname != null ? userfirstname.hashCode() : 0;
     result = 31 * result + (userlastname != null ? userlastname.hashCode() : 0);
     return result;
   }
