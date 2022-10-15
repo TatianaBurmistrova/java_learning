@@ -3,6 +3,7 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
+  private int id;
   private final String userfirstname;
   private final String userlastname;
   private final String title;
@@ -15,10 +16,10 @@ public class ContactData {
   private final String byear;
   private final String group;
 
-
   public ContactData(String userfirstname, String userlastname, String title,
                      String company, String address, String mobile, String email,
                      String bday, String bmonth, String byear, String group) {
+    this.id = 0;
     this.userfirstname = userfirstname;
     this.userlastname = userlastname;
     this.title = title;
@@ -31,6 +32,26 @@ public class ContactData {
     this.byear = byear;
     this.group = group;
   }
+  public ContactData(int id, String userfirstname, String userlastname, String title,
+                     String company, String address, String mobile, String email,
+                     String bday, String bmonth, String byear, String group) {
+    this.id = id;
+    this.userfirstname = userfirstname;
+    this.userlastname = userlastname;
+    this.title = title;
+    this.company = company;
+    this.address = address;
+    this.mobile = mobile;
+    this.email = email;
+    this.bday = bday;
+    this.bmonth = bmonth;
+    this.byear = byear;
+    this.group = group;
+  }
+
+  public int getId() {return id;}
+
+  public void setId(int id) {this.id = id;}
 
   public String getUserfirstname() {
     return userfirstname;
@@ -77,7 +98,8 @@ public class ContactData {
   @Override
   public String toString() {
     return "ContactData{" +
-            "userfirstname='" + userfirstname + '\'' +
+            "id='" + id + '\'' +
+            ", userfirstname='" + userfirstname + '\'' +
             ", userlastname='" + userlastname + '\'' +
             '}';
   }
@@ -89,13 +111,15 @@ public class ContactData {
 
     ContactData that = (ContactData) o;
 
+    if (id != that.id) return false;
     if (!Objects.equals(userfirstname, that.userfirstname)) return false;
     return Objects.equals(userlastname, that.userlastname);
   }
 
   @Override
   public int hashCode() {
-    int result = userfirstname != null ? userfirstname.hashCode() : 0;
+    int result = id;
+    result = 31 * result + (userfirstname != null ? userfirstname.hashCode() : 0);
     result = 31 * result + (userlastname != null ? userlastname.hashCode() : 0);
     return result;
   }

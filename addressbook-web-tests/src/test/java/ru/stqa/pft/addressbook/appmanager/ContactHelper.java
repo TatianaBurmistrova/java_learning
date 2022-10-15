@@ -28,8 +28,8 @@ public class ContactHelper extends HelperBase {
     type(By.name("address"),contactData.getAddress());
     type(By.name("mobile"),contactData.getMobile());
     type(By.name("email"),contactData.getEmail());
-    selectionType(By.name("bday"), contactData.getBday());
-    selectionType(By.name("bmonth"), contactData.getBmonth());
+    type(By.name("bday"), contactData.getBday());
+    type(By.name("bmonth"), contactData.getBmonth());
     type(By.name("byear"),contactData.getByear());
     if (creation){
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -89,9 +89,11 @@ public class ContactHelper extends HelperBase {
       List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element: elements){
-      String userfirstname = element.getText();
-      String userlastname = element.getText();
-      ContactData contact = new ContactData(userfirstname, userlastname,null, null, null
+      List<WebElement> cells = element.findElements(By.tagName("td"));
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      String userfirstname = cells.get(2).getText();
+      String userlastname = cells.get(1).getText();
+      ContactData contact = new ContactData(id, userfirstname, userlastname,null, null, null
               , null, null, null, null, null, null);
       contacts.add(contact);
     }
