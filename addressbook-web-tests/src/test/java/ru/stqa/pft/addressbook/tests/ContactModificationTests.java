@@ -9,34 +9,35 @@ import java.util.List;
 
 public class ContactModificationTests extends TestBase{
 
-  @Test
-
-  public void testContactModification(){
+ @BeforeMethod
+  public void ensurePreconditions() {
     app.getNavigationHelper().goToHomePage();
-
     if (! app.getContactHelper().isThereAContact()){
       app.getContactHelper().createContact(new ContactData("Test User1", "LastName1", "NewUser"
               , "Test Company1", "Russia, Moscow", "222222222"
               , "test@test.com", "13", "February", "1991"
               , "test1"));
     }
+  }
+
+  @Test
+
+  public void testContactModification(){
+
     //int before = app.getContactHelper().getContactCount();
     List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().selectContact(before.size() - 1);
-    app.getContactHelper().initContactModification();
-    ContactData contact = new ContactData(before.get(before.size() - 1).getId()
+    int index = before.size() - 1;
+    ContactData contact = new ContactData(before.get(index).getId()
             ,"Test User1", "LastName1"
             , null, null, null, null
             , null, null, null, null,null);
-    app. getContactHelper().fillContactForm(contact, false);
-    app.getContactHelper().submitContactModification();
-    app.getContactHelper().returnToHomePage();
+    app.getContactHelper().modifyContact(index, contact);
     //int after = app.getContactHelper().getContactCount();
     //Assert.assertEquals(after, before);
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size());
 
-    before.remove(before.size() - 1);
+    before.remove(index);
     before.add(contact);
 
     Comparator<? super ContactData> byId = (c1,c2)-> Integer.compare(c1.getId(),c2.getId());;
@@ -46,6 +47,8 @@ public class ContactModificationTests extends TestBase{
     //Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
 
   }
+
+
 
 
 }
